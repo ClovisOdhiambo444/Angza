@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angza – AI Auditor for Enterprises</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        /* ===== CONTACT SECTION – With Background Image ===== */
+        .contact-section {
+            background-image: url('../assets/bg4.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 5rem 1.5rem;
+        }
+        .contact-section .contact-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 0;
+        }
+        .contact-section .container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .contact-section .section-title-hero {
+            color: #ffffff;
+            background: linear-gradient(135deg, #ffffff 0%, #93C5FD 50%, #22D3EE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        .contact-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+        }
+        .contact-form label {
+            display: block;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 0.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            color: #ffffff;
+            padding: 0.85rem 2.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-submit:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.5);
+        }
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .form-success {
+            display: none;
+            padding: 1.25rem;
+            background: rgba(17, 130, 64, 0.85);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(167, 243, 208, 0.3);
+        }
+        .form-success.show {
+            display: block;
+        }
+        .form-error {
+            display: none;
+            padding: 1.25rem;
+            background: rgba(185, 28, 28, 0.85);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(254, 202, 202, 0.3);
+        }
+        .form-error.show {
+            display: block;
+        }
+        .spinner-small {
+            display: inline-block;
+            width: 1.2rem;
+            height: 1.2rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @media (max-width: 640px) {
+            .contact-section { padding: 4rem 1rem; min-height: 90vh; }
+            .contact-section .section-title-hero { font-size: clamp(2.2rem, 8vw, 3rem); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVIGATION ========== -->
+    <header class="glass-nav">
+        <div class="nav-inner">
+            <div class="brand">
+                <img src="assets/logo.png" alt="Angza" />
+                <span class="brand-name">Angza</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" data-section="home">Home</button>
+                <button class="nav-link" data-section="features">Features</button>
+                <button class="nav-link" data-section="how-it-works">How It Works</button>
+                <button class="nav-link" data-section="contact">Contact</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HOME ========== -->
+    <section id="home" class="page active">
+        <div class="hero-bg">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="text-center">
+                    <h1>
+                        Audit Contracts &amp; Financials <br />
+                        <span class="gradient-text">with AI Precision</span>
+                    </h1>
+                    <p>
+                        Upload hundreds of pages. Get back a structured risk report in seconds.
+                        No hallucinations, no hidden clauses – just actionable insights.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="number">100+</div>
+                            <div class="label">Document types supported</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">70%</div>
+                            <div class="label">Time saved on reviews</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">99.2%</div>
+                            <div class="label">Entity extraction accuracy</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">24/7</div>
+                            <div class="label">Automated compliance monitoring</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features" class="page features-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title-hero">Why Angza?</h2>
+                <p class="section-subtitle">Illuminate the fine print. Secure your contracts.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon blue"><i class="fas fa-expand"></i></div>
+                    <h3>Unlimited Document Length</h3>
+                    <p>Review entire contracts, annual reports, or codebases of any size. Our intelligent system processes everything without truncation or summarisation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon indigo"><i class="fas fa-robot"></i></div>
+                    <h3>Multi-Stage AI Analysis</h3>
+                    <p>Classify, extract, cross-reference, and flag risks using a specialised pipeline – ensuring each document type gets the tailored analysis it deserves.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon emerald"><i class="fas fa-shield"></i></div>
+                    <h3>Enterprise-Grade Security</h3>
+                    <p>SOC-2 ready, on-premise deployment available, and zero data retention policies – your documents stay confidential and protected.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon purple"><i class="fas fa-file-pdf"></i></div>
+                    <h3>Universal Document Support</h3>
+                    <p>PDF, Word, Excel, emails, and scanned images (OCR included). One unified pipeline for all your documents.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon rose"><i class="fas fa-flag"></i></div>
+                    <h3>Smart Risk Identification</h3>
+                    <p>Each finding gets a severity score with clear, actionable recommendations and precise clause citations for full transparency.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon amber"><i class="fas fa-sliders-h"></i></div>
+                    <h3>Custom Compliance Rules</h3>
+                    <p>Define your own deterministic checks (e.g., cap limits, currency thresholds) via simple configuration – no coding required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section id="how-it-works" class="page how-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title-hero">Simple 3‑Step Flow</h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-connector"></div>
+
+                <div class="step-item">
+                    <div class="step-icon upload"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>Upload</h3>
+                    <p>Select your PDF, Word, or Excel file.</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon analyse"><i class="fas fa-search"></i></div>
+                    <h3>Analyse</h3>
+                    <p>Our AI classifies, extracts key terms, runs checks, and performs deep reasoning across all your data.</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon report"><i class="fas fa-file-alt"></i></div>
+                    <h3>Get Report</h3>
+                    <p>Download a structured report with risk scores, flagged clauses, and remediation steps.</p>
+                </div>
+            </div>
+
+            <!-- Upload Area -->
+            <div class="upload-area">
+                <input type="file" id="fileInput" class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt" />
+                <button id="uploadBtn" class="btn-upload">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload Document
+                </button>
+                <p class="upload-hint">Supports PDF, Word, Excel, and text files</p>
+
+                <div id="loading">
+                    <div class="spinner"></div>
+                    <p>Analysing your document...</p>
+                </div>
+
+                <div id="results"></div>
+
+                <div id="downloadSection">
+                    <h4>📥 Download Report</h4>
+                    <div class="download-buttons">
+                        <button id="downloadPdf" class="btn-download pdf">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                        <button id="downloadExcel" class="btn-download excel">
+                            <i class="fas fa-file-excel"></i> Excel
+                        </button>
+                        <button id="downloadJson" class="btn-download json">
+                            <i class="fas fa-file-code"></i> JSON
+                        </button>
+                    </div>
+                    <p>Download the audit report in your preferred format.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT – With Background Image ========== -->
+    <section id="contact" class="page contact-section">
+        <div class="contact-overlay"></div>
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title-hero">Contact Us</h2>
+                <p class="section-subtitle">Have questions, feedback, or need a custom audit? We'd love to hear from you.</p>
+            </div>
+
+            <form class="contact-form" 
+                  action="https://api.staticforms.dev/submit" 
+                  method="post"
+                  id="contactForm">
+
+                <!-- Static Forms required fields -->
+                <input type="hidden" name="apiKey" value="sf_dfdd7993f0b99fbdbc81967e">
+                <input type="hidden" name="redirectTo" value="https://your-domain.com/?contact=success">
+
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="e.g., John Doe" />
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="e.g., john@example.com" />
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="e.g., Partnership Inquiry" />
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+
+            <div id="formSuccess" class="form-success">
+                <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                Thank you! Your message has been sent. We'll get back to you soon.
+            </div>
+
+            <div id="formError" class="form-error">
+                <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>
+                Something went wrong. Please try again or contact us directly at <strong>clovisodhiambo44@gmail.com</strong>.
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script src="js/app.js"></script>
+    <script>
+        // ---- Show success message from redirect ----
+        if (window.location.search.includes('contact=success')) {
+            document.getElementById('formSuccess').classList.add('show');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        // ---- Handle form submission with loading state ----
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-small"></span> Sending...';
+        });
+
+        // ---- Show error if redirect fails ----
+        window.addEventListener('load', function() {
+            if (window.location.search.includes('contact=error')) {
+                document.getElementById('formError').classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
