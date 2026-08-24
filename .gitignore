@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+ENV/
+.venv
+*.log
+
+# Environment variables (contains API keys!)
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backend specific
+*.db
+*.sqlite
+*.sqlite3
+*.pkl
+
+# Frontend specific
+node_modules/
+dist/
+build/
+
+# Uploads / temporary files
+uploads/
+temp/
+tmp/
+
+# Reports (generated files)
+*.pdf
+*.xlsx
+*.json
+!backend/app/report_generator.py
+
+# Coverage / testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Misc
+*.pyproj
+*.sln

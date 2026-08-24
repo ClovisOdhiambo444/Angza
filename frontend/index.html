@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angza – AI Auditor for Enterprises</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-download:hover {
+            transform: translateY(-2px);
+        }
+        .btn-download.pdf {
+            background: #dc2626;
+            color: #fff;
+        }
+        .btn-download.pdf:hover {
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+        .btn-download.excel {
+            background: #16a34a;
+            color: #fff;
+        }
+        .btn-download.excel:hover {
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.4);
+        }
+        .btn-download.json {
+            background: #f59e0b;
+            color: #fff;
+        }
+        .btn-download.json:hover {
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+        .btn-download:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        #downloadSection {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: #f8fafc;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+        }
+        #downloadSection.visible {
+            display: block;
+        }
+        #downloadSection h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+        #downloadSection p {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVIGATION ========== -->
+    <header class="glass-nav">
+        <div class="nav-inner">
+            <div class="brand">
+                <img src="assets/logo.png" alt="Angza" />
+                <span>Ang<span class="accent">za</span></span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" data-section="home">Home</button>
+                <button class="nav-link" data-section="features">Features</button>
+                <button class="nav-link" data-section="how-it-works">How It Works</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HOME ========== -->
+    <section id="home" class="page active">
+        <div class="hero-bg">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="text-center">
+                    <h1>
+                        Audit Contracts &amp; Financials <br />
+                        <span class="gradient-text">with AI Precision</span>
+                    </h1>
+                    <p style="font-size: 1.25rem; font-weight: 500; color: rgba(255,255,255,0.9); max-width: 700px; margin: 1rem auto 0;">
+                        Clear insights. Confident decisions.
+                    </p>
+                    <p style="color: rgba(255,255,255,0.75); max-width: 600px; margin: 1rem auto 0; line-height: 1.6;">
+                        Upload hundreds of pages. Get back a structured risk report in seconds.
+                        No hidden clauses – just actionable insights.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="number">100+</div>
+                            <div class="label">Document types supported</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">70%</div>
+                            <div class="label">Time saved on reviews</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">99.2%</div>
+                            <div class="label">Entity extraction accuracy</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">24/7</div>
+                            <div class="label">Automated compliance monitoring</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features" class="page features-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-badge">Features</span>
+                <h2 class="section-title">Why Angza?</h2>
+                <p class="section-subtitle">Illuminate the fine print. Secure your contracts.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon blue"><i class="fas fa-expand"></i></div>
+                    <h3>Unlimited Document Length</h3>
+                    <p>Review entire contracts, annual reports, or codebases of any size. Our intelligent system processes everything without truncation or summarisation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon indigo"><i class="fas fa-robot"></i></div>
+                    <h3>Multi-Stage AI Analysis</h3>
+                    <p>Classify, extract, cross-reference, and flag risks using a specialised pipeline – ensuring each document type gets the tailored analysis it deserves.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon emerald"><i class="fas fa-shield"></i></div>
+                    <h3>Enterprise-Grade Security</h3>
+                    <p>SOC-2 ready, on-premise deployment available, and zero data retention policies – your documents stay confidential and protected.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon purple"><i class="fas fa-file-pdf"></i></div>
+                    <h3>Universal Document Support</h3>
+                    <p>PDF, Word, Excel, emails, and scanned images (OCR included). One unified pipeline for all your documents.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon rose"><i class="fas fa-flag"></i></div>
+                    <h3>Smart Risk Identification</h3>
+                    <p>Each finding gets a severity score with clear, actionable recommendations and precise clause citations for full transparency.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon amber"><i class="fas fa-sliders-h"></i></div>
+                    <h3>Custom Compliance Rules</h3>
+                    <p>Define your own deterministic checks (e.g., cap limits, currency thresholds) via simple configuration – no coding required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section id="how-it-works" class="page how-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-badge">Simple 3-step flow</span>
+                <h2 class="section-title">From Upload to Report in Minutes</h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-connector"></div>
+
+                <div class="step-item">
+                    <div class="step-icon upload"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>Upload</h3>
+                    <p>Select your PDF, Word, or Excel file.</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon analyse"><i class="fas fa-search"></i></div>
+                    <h3>Analyse</h3>
+                    <p>Our AI classifies, extracts key terms, runs checks, and performs deep reasoning across all your data.</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon report"><i class="fas fa-file-alt"></i></div>
+                    <h3>Get Report</h3>
+                    <p>Download a structured report with risk scores, flagged clauses, and remediation steps.</p>
+                </div>
+            </div>
+
+            <!-- Upload Area -->
+            <div class="upload-area">
+                <input type="file" id="fileInput" class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt" />
+                <button id="uploadBtn" class="btn-upload">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload Document
+                </button>
+                <p class="upload-hint">Supports PDF, Word, Excel, and text files</p>
+
+                <div id="loading">
+                    <div class="spinner"></div>
+                    <p>Analysing your document...</p>
+                </div>
+
+                <div id="results"></div>
+
+                <!-- Download Section -->
+                <div id="downloadSection">
+                    <h4>📥 Download Report</h4>
+                    <div class="download-buttons">
+                        <button id="downloadPdf" class="btn-download pdf">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                        <button id="downloadExcel" class="btn-download excel">
+                            <i class="fas fa-file-excel"></i> Excel
+                        </button>
+                        <button id="downloadJson" class="btn-download json">
+                            <i class="fas fa-file-code"></i> JSON
+                        </button>
+                    </div>
+                    <p>Download the audit report in your preferred format.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script src="js/app.js"></script>
+</body>
+</html>
