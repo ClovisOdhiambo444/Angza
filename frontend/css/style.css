@@ -1446,3 +1446,266 @@ body {
 .email-capture .capture-success.visible {
     display: block;
 }
+
+/* ===== CONTACT SECTION – With Background Image ===== */
+.contact-section {
+    background-image: url('../assets/bg4.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 1.5rem;
+}
+.contact-section .contact-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+}
+.contact-section .container {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+.contact-section .section-title-hero {
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #93C5FD 50%, #22D3EE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+.contact-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2.5rem;
+}
+.contact-form label {
+    display: block;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.5rem;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    background: rgba(255, 255, 255, 0.2);
+}
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+.btn-submit {
+    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+    color: #ffffff;
+    padding: 0.85rem 2.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn-submit:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.5);
+}
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+.form-success {
+    display: none;
+    padding: 1.25rem;
+    background: rgba(17, 130, 64, 0.85);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    border-radius: 0.75rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(167, 243, 208, 0.3);
+}
+.form-success.show {
+    display: block;
+}
+.form-error {
+    display: none;
+    padding: 1.25rem;
+    background: rgba(185, 28, 28, 0.85);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    border-radius: 0.75rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(254, 202, 202, 0.3);
+}
+.form-error.show {
+    display: block;
+}
+.spinner-small {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* ===== MODALS (Privacy, Terms) ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+.modal-overlay.active {
+    display: flex;
+}
+.modal-box {
+    background: #ffffff;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+.modal-box .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748b;
+    transition: color 0.3s;
+}
+.modal-box .modal-close:hover {
+    color: #0f172a;
+}
+.modal-box h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1E1B4B 30%, #2563EB 70%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.modal-box h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1E1B4B;
+    margin: 1.2rem 0 0.4rem;
+}
+.modal-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #334155;
+    margin-bottom: 0.5rem;
+}
+.modal-box ul {
+    padding-left: 1.5rem;
+    color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.modal-box ul li {
+    margin-bottom: 0.3rem;
+}
+
+/* ===== COOKIE BANNER ===== */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.cookie-banner.visible {
+    display: flex;
+}
+.cookie-banner p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.85rem;
+    margin: 0;
+    flex: 1;
+    min-width: 180px;
+}
+.cookie-banner p i {
+    color: #93C5FD;
+    margin-right: 0.4rem;
+}
+.cookie-banner .btn-cookie {
+    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+    color: #fff;
+    border: none;
+    padding: 0.4rem 1.2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+.cookie-banner .btn-cookie:hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+@media (max-width: 640px) {
+    .contact-section { padding: 4rem 1rem; min-height: 90vh; }
+    .contact-section .section-title-hero { font-size: clamp(2.2rem, 8vw, 3rem); }
+    .modal-box { padding: 1.5rem; }
+    .modal-box h2 { font-size: 1.5rem; }
+    .cookie-banner { flex-direction: column; text-align: center; }
+    .cookie-banner .btn-cookie { width: 100%; }
+}
