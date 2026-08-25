@@ -338,7 +338,7 @@
 
                 <!-- Static Forms required fields -->
                 <input type="hidden" name="apiKey" value="sf_dfdd7993f0b99fbdbc81967e">
-                <input type="hidden" name="redirectTo" value="https://your-domain.com/?contact=success">
+                <input type="hidden" name="redirectTo" value="">
 
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" required placeholder="e.g., John Doe" />
@@ -372,24 +372,37 @@
     <!-- ========== JAVASCRIPT ========== -->
     <script src="js/app.js"></script>
     <script>
-        // ---- Show success message from redirect ----
-        if (window.location.search.includes('contact=success')) {
-            document.getElementById('formSuccess').classList.add('show');
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-
-        // ---- Handle form submission with loading state ----
+        // ---- Contact Form: AJAX submit (no redirect) ----
         document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
             const btn = document.getElementById('submitBtn');
             btn.disabled = true;
             btn.innerHTML = '<span class="spinner-small"></span> Sending...';
-        });
 
-        // ---- Show error if redirect fails ----
-        window.addEventListener('load', function() {
-            if (window.location.search.includes('contact=error')) {
+            const form = this;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('formSuccess').classList.add('show');
+                    form.reset();
+                } else {
+                    document.getElementById('formError').classList.add('show');
+                }
+            })
+            .catch(() => {
                 document.getElementById('formError').classList.add('show');
-            }
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            });
         });
     </script>
 </body>
