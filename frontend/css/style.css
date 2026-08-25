@@ -1153,3 +1153,296 @@ body {
         padding: 0.8rem;
     }
 }
+
+/* ===== FOOTER – Thin & Neat ===== */
+.site-footer {
+    background: #0f172a;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    min-height: 60px;
+}
+.site-footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.site-footer .footer-links a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.site-footer .footer-links a:hover {
+    color: #93C5FD;
+}
+.site-footer .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+.site-footer .footer-copy i {
+    color: #2563EB;
+    margin: 0 0.2rem;
+}
+
+/* ===== FOOTER – Matches App Theme ===== */
+.site-footer {
+    background: linear-gradient(135deg, #0f172a 0%, #1E1B4B 50%, #2563EB 100%);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    min-height: 60px;
+    backdrop-filter: blur(4px);
+}
+
+.site-footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.site-footer .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    position: relative;
+}
+.site-footer .footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #93C5FD, #22D3EE);
+    transition: width 0.3s ease;
+}
+.site-footer .footer-links a:hover {
+    color: #ffffff;
+}
+.site-footer .footer-links a:hover::after {
+    width: 100%;
+}
+.site-footer .footer-links a i {
+    color: #93C5FD;
+}
+.site-footer .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+.site-footer .footer-copy .highlight {
+    color: #93C5FD;
+    font-weight: 500;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 4px solid transparent;
+    border-image: linear-gradient(135deg, #2563EB, #06B6D4);
+    border-image-slice: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+.testimonial-card .quote {
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 0.5rem;
+}
+.testimonial-card .quote i {
+    color: #93C5FD;
+    margin-right: 0.3rem;
+}
+.testimonial-card .author {
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 0.25rem;
+}
+.testimonial-card .role {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+}
+
+/* ===== DRAG & DROP UPLOAD ===== */
+.drop-zone {
+    border: 2px dashed rgba(255,255,255,0.3);
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: pointer;
+    background: rgba(255,255,255,0.03);
+    margin-bottom: 1rem;
+}
+.drop-zone:hover,
+.drop-zone.dragover {
+    border-color: #2563EB;
+    background: rgba(37, 99, 235, 0.08);
+}
+.drop-zone i {
+    font-size: 3rem;
+    color: #93C5FD;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.drop-zone p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+}
+.drop-zone .drop-hint {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.25rem;
+}
+
+/* ===== UPLOAD PREVIEW ===== */
+.upload-preview {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: rgba(37, 99, 235, 0.15);
+    backdrop-filter: blur(4px);
+    border-radius: 0.5rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+.upload-preview.visible {
+    display: flex;
+}
+.upload-preview .file-icon {
+    font-size: 1.2rem;
+    color: #93C5FD;
+}
+.upload-preview .file-name {
+    font-weight: 500;
+    word-break: break-all;
+}
+.upload-preview .file-size {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+}
+.upload-preview .file-remove {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.upload-preview .file-remove:hover {
+    color: #ef4444;
+}
+
+/* ===== EMAIL CAPTURE ===== */
+.email-capture {
+    margin-top: 2rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.email-capture p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+.email-capture .capture-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.email-capture .capture-form input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 1rem;
+}
+.email-capture .capture-form input::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+.email-capture .capture-form input:focus {
+    outline: none;
+    border-color: #2563EB;
+}
+.email-capture .capture-form .btn-capture {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #2563EB, #06B6D4);
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+.email-capture .capture-form .btn-capture:hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+}
+.email-capture .capture-success {
+    display: none;
+    color: #93C5FD;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+.email-capture .capture-success.visible {
+    display: block;
+}

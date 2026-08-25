@@ -149,9 +149,133 @@
             animation: spin 0.8s linear infinite;
         }
 
+        /* ===== MODALS (Privacy, Terms) ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: #ffffff;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 1rem;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+        }
+        .modal-box .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            transition: color 0.3s;
+        }
+        .modal-box .modal-close:hover {
+            color: #0f172a;
+        }
+        .modal-box h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1E1B4B 30%, #2563EB 70%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .modal-box h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1E1B4B;
+            margin: 1.2rem 0 0.4rem;
+        }
+        .modal-box p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+            margin-bottom: 0.5rem;
+        }
+        .modal-box ul {
+            padding-left: 1.5rem;
+            color: #334155;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .modal-box ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ===== COOKIE BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .cookie-banner.visible {
+            display: flex;
+        }
+        .cookie-banner p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.85rem;
+            margin: 0;
+            flex: 1;
+            min-width: 180px;
+        }
+        .cookie-banner p i {
+            color: #93C5FD;
+            margin-right: 0.4rem;
+        }
+        .cookie-banner .btn-cookie {
+            background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            color: #fff;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+        .cookie-banner .btn-cookie:hover {
+            transform: scale(1.04);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
         @media (max-width: 640px) {
             .contact-section { padding: 4rem 1rem; min-height: 90vh; }
             .contact-section .section-title-hero { font-size: clamp(2.2rem, 8vw, 3rem); }
+            .modal-box { padding: 1.5rem; }
+            .modal-box h2 { font-size: 1.5rem; }
+            .cookie-banner { flex-direction: column; text-align: center; }
+            .cookie-banner .btn-cookie { width: 100%; }
         }
     </style>
 </head>
@@ -204,6 +328,35 @@
                         <div class="stat-card">
                             <div class="number">24/7</div>
                             <div class="label">Automated compliance monitoring</div>
+                        </div>
+                    </div>
+
+                    <!-- ===== TESTIMONIALS ===== -->
+                    <div class="testimonials">
+                        <div style="text-align:center; margin-bottom:1.5rem;">
+                            <span style="color:rgba(255,255,255,0.5); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;">What people say</span>
+                        </div>
+                        <div class="testimonials-grid">
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> Angza uncovered liability caps we'd missed for years. It's like having a senior counsel on demand.</div>
+                                <div class="author">Kelvin Oluoch</div>
+                                <div class="role">Legal Counsel, Fintech Co.</div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> I reviewed a 200‑page vendor agreement in under 5 minutes. The risk breakdown was incredibly clear.</div>
+                                <div class="author">Emmanuel Indiazi</div>
+                                <div class="role">CFO, SaaS Startup</div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> We use Angza for all our NDAs and partnership agreements. It's become our go‑to compliance tool.</div>
+                                <div class="author">Jerry Rawlince</div>
+                                <div class="role">Founder, LegalTech Hub</div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> The speed and accuracy are unmatched. I can now focus on strategy instead of reading endless fine print.</div>
+                                <div class="author">Vallery Akinyi</div>
+                                <div class="role">Compliance Officer, Enterprise Corp</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -290,11 +443,28 @@
 
             <!-- Upload Area -->
             <div class="upload-area">
+                <!-- Drag & Drop Zone -->
+                <div class="drop-zone" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drop your document here, or click to browse</p>
+                    <span class="drop-hint">Supports PDF, Word, Excel, TXT</span>
+                </div>
+
+                <!-- Hidden file input -->
                 <input type="file" id="fileInput" class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt" />
-                <button id="uploadBtn" class="btn-upload">
+
+                <!-- Upload Preview -->
+                <div class="upload-preview" id="uploadPreview">
+                    <i class="fas fa-file file-icon"></i>
+                    <span class="file-name" id="fileName">file.pdf</span>
+                    <span class="file-size" id="fileSize">12.4 KB</span>
+                    <button class="file-remove" id="fileRemove"><i class="fas fa-times"></i></button>
+                </div>
+
+                <button id="uploadBtn" class="btn-upload" style="margin-top:0.5rem;">
                     <i class="fas fa-cloud-upload-alt"></i> Upload Document
                 </button>
-                <p class="upload-hint">Supports PDF, Word, Excel, and text files</p>
+                <p class="upload-hint">Or click the button above</p>
 
                 <div id="loading">
                     <div class="spinner"></div>
@@ -304,7 +474,7 @@
                 <div id="results"></div>
 
                 <div id="downloadSection">
-                    <h4>📥 Download Report</h4>
+                    <h4><i class="fas fa-download"></i> Download Report</h4>
                     <div class="download-buttons">
                         <button id="downloadPdf" class="btn-download pdf">
                             <i class="fas fa-file-pdf"></i> PDF
@@ -336,21 +506,20 @@
                   method="post"
                   id="contactForm">
 
-                <!-- Static Forms required fields -->
                 <input type="hidden" name="apiKey" value="sf_dfdd7993f0b99fbdbc81967e">
                 <input type="hidden" name="redirectTo" value="">
 
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="e.g., John Doe" />
+                <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                <input type="text" id="name" name="name" required />
 
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="e.g., john@example.com" />
+                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" name="email" required />
 
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="e.g., Partnership Inquiry" />
+                <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+                <input type="text" id="subject" name="subject" />
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+                <label for="message"><i class="fas fa-pen"></i> Message</label>
+                <textarea id="message" name="message" required></textarea>
 
                 <button type="submit" class="btn-submit" id="submitBtn">
                     <i class="fas fa-paper-plane"></i> Send Message
@@ -358,21 +527,96 @@
             </form>
 
             <div id="formSuccess" class="form-success">
-                <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                <i class="fas fa-check-circle"></i>
                 Thank you! Your message has been sent. We'll get back to you soon.
             </div>
 
             <div id="formError" class="form-error">
-                <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>
+                <i class="fas fa-exclamation-circle"></i>
                 Something went wrong. Please try again or contact us directly at <strong>clovisodhiambo44@gmail.com</strong>.
             </div>
         </div>
     </section>
 
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="#" id="privacyLink"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+            <a href="#" id="termsLink"><i class="fas fa-file-contract"></i> Terms of Service</a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 Angza, Inc. Built by <span class="highlight">Clovis Odhiambo</span>
+        </div>
+    </footer>
+
+    <!-- ========== PRIVACY POLICY MODAL ========== -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal-box">
+            <button class="modal-close" id="privacyClose">&times;</button>
+            <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+            <p><strong>Last updated:</strong> August 2026</p>
+            <p>Angza ("we", "our", "us") respects your privacy. This policy explains how we handle your data.</p>
+            <h3>Data We Collect</h3>
+            <ul>
+                <li><strong>Uploaded Documents:</strong> We only process the content of your documents in memory to generate audit reports. We do not store them permanently.</li>
+                <li><strong>Contact Information:</strong> If you use the contact form, we collect your name, email, and message solely to respond to your inquiry.</li>
+            </ul>
+            <h3>How We Use Your Data</h3>
+            <ul>
+                <li>To provide and improve the audit service.</li>
+                <li>To respond to your messages and support requests.</li>
+            </ul>
+            <h3>Data Sharing</h3>
+            <p>We do not share your personal data or document content with third parties, except as required by law.</p>
+            <h3>Data Retention</h3>
+            <p>Uploaded documents are deleted immediately after the audit is completed. Contact form submissions are retained for up to 30 days for record‑keeping.</p>
+            <h3>Your Rights</h3>
+            <ul>
+                <li>You may request access to the data we hold about you.</li>
+                <li>You may ask us to delete your personal data.</li>
+            </ul>
+            <p>For any privacy concerns, contact us at <strong>clovisodhiambo44@gmail.com</strong>.</p>
+        </div>
+    </div>
+
+    <!-- ========== TERMS OF SERVICE MODAL ========== -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-box">
+            <button class="modal-close" id="termsClose">&times;</button>
+            <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
+            <p><strong>Last updated:</strong> August 2026</p>
+            <p>By using Angza ("we", "our", "us"), you agree to the following terms.</p>
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing or using our service, you agree to be bound by these terms. If you disagree, you must not use the service.</p>
+            <h3>Description of Service</h3>
+            <p>Angza provides an AI‑powered contract and financial document auditing tool. We generate risk reports based on the content you upload.</p>
+            <h3>User Responsibilities</h3>
+            <ul>
+                <li>You are responsible for the content you upload and its legality.</li>
+                <li>You must not upload any harmful or illegal content.</li>
+                <li>You agree not to misuse or reverse‑engineer the service.</li>
+            </ul>
+            <h3>Disclaimer of Warranties</h3>
+            <p>The service is provided "as is" without warranties of any kind. We do not guarantee that the audit results are error‑free or suitable for your specific needs.</p>
+            <h3>Limitation of Liability</h3>
+            <p>In no event shall Angza be liable for any indirect, incidental, special, or consequential damages arising from your use of the service.</p>
+            <h3>Changes to Terms</h3>
+            <p>We reserve the right to update these terms at any time. Continued use constitutes acceptance of the new terms.</p>
+            <h3>Contact</h3>
+            <p>For questions about these terms, contact <strong>clovisodhiambo44@gmail.com</strong>.</p>
+        </div>
+    </div>
+
+    <!-- ========== COOKIE CONSENT BANNER ========== -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p><i class="fas fa-cookie-bite"></i> We use cookies to improve your experience. By using our site, you accept our use of cookies.</p>
+        <button class="btn-cookie" id="cookieAccept">Accept</button>
+    </div>
+
     <!-- ========== JAVASCRIPT ========== -->
     <script src="js/app.js"></script>
     <script>
-        // ---- Contact Form: AJAX submit (no redirect) ----
+        // ---- Contact Form: AJAX submit ----
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -403,6 +647,122 @@
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
             });
+        });
+
+        // ---- Modal controls ----
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        document.getElementById('privacyLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('privacyModal');
+        });
+        document.getElementById('privacyClose').addEventListener('click', function() {
+            closeModal('privacyModal');
+        });
+
+        document.getElementById('termsLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('termsModal');
+        });
+        document.getElementById('termsClose').addEventListener('click', function() {
+            closeModal('termsModal');
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+        // ---- Cookie Banner ----
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieBanner').classList.add('visible');
+        }
+        document.getElementById('cookieAccept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookieBanner').classList.remove('visible');
+        });
+
+        // ---- Drag & Drop + Upload Preview ----
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const preview = document.getElementById('uploadPreview');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const fileRemove = document.getElementById('fileRemove');
+
+        let selectedFile = null;
+
+        function updatePreview(file) {
+            if (file) {
+                selectedFile = file;
+                fileName.textContent = file.name;
+                const size = (file.size / 1024).toFixed(1);
+                fileSize.textContent = size + ' KB';
+                preview.classList.add('visible');
+                const icon = preview.querySelector('.file-icon');
+                const ext = file.name.split('.').pop().toLowerCase();
+                if (ext === 'pdf') icon.className = 'fas fa-file-pdf file-icon';
+                else if (['doc', 'docx'].includes(ext)) icon.className = 'fas fa-file-word file-icon';
+                else if (['xls', 'xlsx'].includes(ext)) icon.className = 'fas fa-file-excel file-icon';
+                else icon.className = 'fas fa-file file-icon';
+            } else {
+                selectedFile = null;
+                preview.classList.remove('visible');
+            }
+        }
+
+        fileInput.addEventListener('change', function(e) {
+            if (this.files.length) {
+                updatePreview(this.files[0]);
+            } else {
+                updatePreview(null);
+            }
+        });
+
+        uploadBtn.addEventListener('click', function() {
+            if (selectedFile) {
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(selectedFile);
+                fileInput.files = dataTransfer.files;
+                fileInput.dispatchEvent(new Event('change'));
+            } else {
+                fileInput.click();
+            }
+        });
+
+        fileRemove.addEventListener('click', function(e) {
+            e.stopPropagation();
+            updatePreview(null);
+            fileInput.value = '';
+        });
+
+        dropZone.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+        });
+        dropZone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length) {
+                updatePreview(files[0]);
+            }
+        });
+        dropZone.addEventListener('click', function() {
+            fileInput.click();
         });
     </script>
 </body>
