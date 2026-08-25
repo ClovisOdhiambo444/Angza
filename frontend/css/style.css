@@ -1709,3 +1709,112 @@ body {
     .cookie-banner { flex-direction: column; text-align: center; }
     .cookie-banner .btn-cookie { width: 100%; }
 }
+
+/* ===== MOBILE MENU ===== */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #0f172a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s;
+    min-width: 44px;
+    min-height: 44px;
+}
+.menu-toggle:hover {
+    color: #2563EB;
+}
+
+/* Desktop nav-links remain as flex */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Mobile menu wrapper */
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 1.5rem 1.5rem 2rem;
+        gap: 1.25rem;
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        transform: translateY(-120%);
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0;
+    }
+    .nav-menu.active {
+        transform: translateY(0);
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .nav-menu .nav-link {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        color: #0f172a;
+    }
+    .nav-menu .nav-link.active {
+        color: #2563EB !important;
+    }
+    .nav-menu .nav-link.active::after {
+        display: none;
+    }
+
+    /* Adjust header height for mobile if needed */
+    .glass-nav {
+        height: 64px;
+    }
+    .glass-nav .brand img {
+        height: 28px;
+    }
+    .brand-name {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+    .nav-menu {
+        display: flex !important;
+        transform: none !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        position: static !important;
+        background: none !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        border: none !important;
+        flex-direction: row !important;
+        gap: 2rem !important;
+    }
+}
