@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: angza-backend
+    runtime: python
+    repo: https://github.com/ClovisOdhiambo444/Angza.git
+    plan: free
+    region: oregon
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && python3 run.py
+    envVars:
+      - key: LLM_PROVIDER
+        value: openrouter
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: MAX_FILE_SIZE
+        value: 10485760
