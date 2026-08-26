@@ -1,23 +1,33 @@
-from fastapi import APIRouter, File, UploadFile, HTTPException, Response
+from fastapi import APIRouter, File, UploadFile, HTTPException, Request
+from fastapi.responses import Response
 from app.parsers import parse_document
 from app.audit_engine import audit_document
 from app.models import AuditReport
-from app.config import MAX_FILE_SIZE
+from app.config import MAX_FILE_SIZE, ALLOWED_EXTENSIONS
 from app.report_generator import generate_pdf_report, generate_excel_report, generate_json_report
-import json
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 router = APIRouter()
+limiter = Limiter(key_func=get_remote_address)
 
-# Store the latest report in memory (for download)
+# In-memory storage for latest report (for download endpoints)
 latest_report = {}
 
+def allowed_file(filename: str) -> bool:
+    ext = filename.split(".")[-1].lower()
+    return ext in ALLOWED_EXTENSIONS
+
 @router.post("/upload", response_model=AuditReport)
-async def upload_file(file: UploadFile = File(...)):
-    global latest_report
+@limiter.limit("10/minute")
+async def upload_file(request: Request, file: UploadFile = File(...)):
+    # Validate file type
+    if not allowed_file(file.filename):
+        raise HTTPException(status_code=400, detail="File type not allowed. Supported: PDF, Word, Excel, TXT")
     
     content = await file.read()
     if len(content) > MAX_FILE_SIZE:
-        raise HTTPException(status_code=413, detail="File too large")
+        raise HTTPException(status_code=413, detail=f"File too large. Max size: {MAX_FILE_SIZE//1024//1024}MB")
 
     try:
         text = parse_document(file.filename, content)
@@ -29,7 +39,8 @@ async def upload_file(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Audit failed: {str(e)}")
 
-    # Store the report for download
+    # Store report for download
+    global latest_report
     latest_report = {
         "filename": file.filename,
         "risk_score": result.get("risk_score", 0),
