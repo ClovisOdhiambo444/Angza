@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <style>
-        /* ===== MODALS ===== */
+        /* ===== MODALS – Glassmorphism ===== */
         .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 10000;
             align-items: center;
             justify-content: center;
@@ -26,15 +27,19 @@
             display: flex;
         }
         .modal-box {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             max-width: 700px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             padding: 2rem;
             position: relative;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            color: #ffffff;
         }
         .modal-box .modal-close {
             position: absolute;
@@ -42,57 +47,130 @@
             right: 1.2rem;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.7);
             transition: color 0.3s;
         }
         .modal-box .modal-close:hover {
-            color: #0f172a;
+            color: #ffffff;
         }
         .modal-box h2 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #0f172a;
+            color: #ffffff;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #0f172a 0%, #1E1B4B 30%, #2563EB 70%, #06B6D4 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #93C5FD 50%, #22D3EE 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        .modal-box h2 i {
+            -webkit-text-fill-color: #93C5FD;
+            margin-right: 0.5rem;
+        }
         .modal-box h3 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #1E1B4B;
+            color: #e2e8f0;
             margin: 1.2rem 0 0.4rem;
         }
         .modal-box p, .modal-box li {
             font-size: 0.95rem;
-            line-height: 1.6;
-            color: #334155;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
         }
         .modal-box ul {
             padding-left: 1.5rem;
         }
         .modal-box .legal-meta {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
-        .nav-link-footer {
+        /* Scrollbar styling for modal */
+        .modal-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .modal-box::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        /* ===== FOOTER – Inline + Glow ===== */
+        .site-footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1E1B4B 50%, #2563EB 100%);
+            color: rgba(255, 255, 255, 0.75);
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            min-height: 60px;
+            backdrop-filter: blur(4px);
+        }
+        .site-footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .site-footer .footer-links .nav-link-footer {
             background: none;
             border: none;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             font-family: inherit;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            position: relative;
         }
-        .nav-link-footer:hover {
+        .site-footer .footer-links .nav-link-footer i {
             color: #93C5FD;
+            transition: color 0.3s;
+        }
+        .site-footer .footer-links .nav-link-footer:hover {
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(147, 197, 253, 0.6), 0 0 40px rgba(37, 99, 235, 0.3);
+        }
+        .site-footer .footer-links .nav-link-footer:hover i {
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(147, 197, 253, 0.6);
+        }
+        .site-footer .footer-links .nav-link-footer::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #93C5FD, #22D3EE);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .site-footer .footer-links .nav-link-footer:hover::after {
+            width: 100%;
+        }
+        .site-footer .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .site-footer .footer-copy .highlight {
+            color: #93C5FD;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -202,7 +280,7 @@
         </div>
     </section>
 
-    <!-- ========== FOOTER ========== -->
+    <!-- ========== FOOTER – Inline with Glow ========== -->
     <footer class="site-footer">
         <div class="footer-links">
             <button class="nav-link-footer" id="privacyLink"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
@@ -211,7 +289,7 @@
         <div class="footer-copy">&copy; 2026 Angza, Inc. Built by <span class="highlight">Clovis Odhiambo</span></div>
     </footer>
 
-    <!-- ========== PRIVACY POLICY MODAL ========== -->
+    <!-- ========== PRIVACY POLICY MODAL (Glassmorphic) ========== -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal-box">
             <button class="modal-close" id="privacyClose">&times;</button>
@@ -219,28 +297,57 @@
             <p class="legal-meta"><strong>Last updated:</strong> August 2026</p>
             <p>Angza ("we", "our", "us") respects your privacy. This policy explains how we handle your data.</p>
             <h3>Data We Collect</h3>
-            <ul><li><strong>Uploaded Documents:</strong> We process the content of your documents in memory to generate audit reports. We do <strong>not</strong> store them permanently. They are deleted immediately after the audit is completed.</li><li><strong>Contact Information:</strong> If you use the contact form, we collect your name, email, and message solely to respond to your inquiry.</li></ul>
+            <ul>
+                <li><strong>Uploaded Documents:</strong> We process the content of your documents in memory to generate audit reports. We do <strong>not</strong> store them permanently. They are deleted immediately after the audit is completed.</li>
+                <li><strong>Contact Information:</strong> If you use the contact form, we collect your name, email, and message solely to respond to your inquiry.</li>
+            </ul>
             <h3>How We Use Your Data</h3>
-            <ul><li>To provide and improve the audit service.</li><li>To respond to your messages and support requests.</li><li>To monitor usage and prevent abuse.</li></ul>
-            <h3>Data Sharing</h3><p>We do <strong>not</strong> share your personal data or document content with third parties, except as required by law.</p>
-            <h3>Data Retention</h3><ul><li>Uploaded documents are <strong>deleted immediately</strong> after the audit.</li><li>Contact form submissions are retained for up to 30 days and then deleted.</li></ul>
-            <h3>Your Rights</h3><ul><li>Request access to your data.</li><li>Ask us to correct or delete your personal data.</li><li>Withdraw consent at any time.</li></ul><p>Contact: <strong>clovisodhiambo44@gmail.com</strong></p>
+            <ul>
+                <li>To provide and improve the audit service.</li>
+                <li>To respond to your messages and support requests.</li>
+                <li>To monitor usage and prevent abuse.</li>
+            </ul>
+            <h3>Data Sharing</h3>
+            <p>We do <strong>not</strong> share your personal data or document content with third parties, except as required by law.</p>
+            <h3>Data Retention</h3>
+            <ul>
+                <li>Uploaded documents are <strong>deleted immediately</strong> after the audit.</li>
+                <li>Contact form submissions are retained for up to 30 days and then deleted.</li>
+            </ul>
+            <h3>Your Rights</h3>
+            <ul>
+                <li>Request access to your data.</li>
+                <li>Ask us to correct or delete your personal data.</li>
+                <li>Withdraw consent at any time.</li>
+            </ul>
+            <p>Contact: <strong>clovisodhiambo44@gmail.com</strong></p>
         </div>
     </div>
 
-    <!-- ========== TERMS OF SERVICE MODAL ========== -->
+    <!-- ========== TERMS OF SERVICE MODAL (Glassmorphic) ========== -->
     <div class="modal-overlay" id="termsModal">
         <div class="modal-box">
             <button class="modal-close" id="termsClose">&times;</button>
             <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
             <p class="legal-meta"><strong>Last updated:</strong> August 2026</p>
             <p>By using Angza ("we", "our", "us"), you agree to the following terms.</p>
-            <h3>Acceptance of Terms</h3><p>By accessing or using our service, you agree to be bound by these terms.</p>
-            <h3>Description of Service</h3><p>Angza provides an AI‑powered contract and financial document auditing tool. The service is provided "as is" and does not constitute legal advice.</p>
-            <h3>User Responsibilities</h3><ul><li>You are responsible for the content you upload.</li><li>You must not upload illegal or harmful content.</li><li>You agree not to misuse the service.</li></ul>
-            <h3>Disclaimer of Warranties</h3><p>The service is provided "as is". We do not guarantee error‑free results.</p>
-            <h3>Limitation of Liability</h3><p>Angza is not liable for indirect, incidental, or consequential damages.</p>
-            <h3>Changes to Terms</h3><p>We may update these terms at any time. Continued use constitutes acceptance.</p><p>Contact: <strong>clovisodhiambo44@gmail.com</strong></p>
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing or using our service, you agree to be bound by these terms.</p>
+            <h3>Description of Service</h3>
+            <p>Angza provides an AI‑powered contract and financial document auditing tool. The service is provided "as is" and does not constitute legal advice.</p>
+            <h3>User Responsibilities</h3>
+            <ul>
+                <li>You are responsible for the content you upload.</li>
+                <li>You must not upload illegal or harmful content.</li>
+                <li>You agree not to misuse the service.</li>
+            </ul>
+            <h3>Disclaimer of Warranties</h3>
+            <p>The service is provided "as is". We do not guarantee error‑free results.</p>
+            <h3>Limitation of Liability</h3>
+            <p>Angza is not liable for indirect, incidental, or consequential damages.</p>
+            <h3>Changes to Terms</h3>
+            <p>We may update these terms at any time. Continued use constitutes acceptance.</p>
+            <p>Contact: <strong>clovisodhiambo44@gmail.com</strong></p>
         </div>
     </div>
 
