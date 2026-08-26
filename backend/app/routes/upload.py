@@ -11,7 +11,6 @@ from slowapi.util import get_remote_address
 router = APIRouter()
 limiter = Limiter(key_func=get_remote_address)
 
-# In-memory storage for latest report (for download endpoints)
 latest_report = {}
 
 def allowed_file(filename: str) -> bool:
@@ -21,13 +20,18 @@ def allowed_file(filename: str) -> bool:
 @router.post("/upload", response_model=AuditReport)
 @limiter.limit("10/minute")
 async def upload_file(request: Request, file: UploadFile = File(...)):
-    # Validate file type
     if not allowed_file(file.filename):
-        raise HTTPException(status_code=400, detail="File type not allowed. Supported: PDF, Word, Excel, TXT")
-    
+        raise HTTPException(
+            status_code=400,
+            detail="File type not allowed. Supported: PDF, Word, Excel, TXT"
+        )
+
     content = await file.read()
     if len(content) > MAX_FILE_SIZE:
-        raise HTTPException(status_code=413, detail=f"File too large. Max size: {MAX_FILE_SIZE//1024//1024}MB")
+        raise HTTPException(
+            status_code=413,
+            detail=f"File too large. Max size: {MAX_FILE_SIZE // 1024 // 1024}MB"
+        )
 
     try:
         text = parse_document(file.filename, content)
@@ -39,7 +43,6 @@ async def upload_file(request: Request, file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Audit failed: {str(e)}")
 
-    # Store report for download
     global latest_report
     latest_report = {
         "filename": file.filename,
@@ -49,14 +52,12 @@ async def upload_file(request: Request, file: UploadFile = File(...)):
         "red_flags": result.get("red_flags", [])
     }
 
-    report = AuditReport(**latest_report)
-    return report
+    return AuditReport(**latest_report)
 
 @router.get("/report/pdf")
 async def download_pdf():
     if not latest_report:
         raise HTTPException(status_code=404, detail="No report available. Please upload a document first.")
-    
     pdf_bytes = generate_pdf_report(latest_report)
     return Response(
         content=pdf_bytes,
@@ -68,7 +69,6 @@ async def download_pdf():
 async def download_excel():
     if not latest_report:
         raise HTTPException(status_code=404, detail="No report available. Please upload a document first.")
-    
     excel_bytes = generate_excel_report(latest_report)
     return Response(
         content=excel_bytes,
@@ -80,7 +80,6 @@ async def download_excel():
 async def download_json():
     if not latest_report:
         raise HTTPException(status_code=404, detail="No report available. Please upload a document first.")
-    
     json_bytes = generate_json_report(latest_report)
     return Response(
         content=json_bytes,
