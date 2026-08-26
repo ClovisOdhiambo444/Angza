@@ -5,18 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://angza-backend.onrender.com http://localhost:8000;">
     <title>Angza – AI Auditor for Enterprises</title>
-
-    <!-- Favicon -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <!-- Main Styles -->
     <link rel="stylesheet" href="css/style.css" />
 
     <style>
-        /* ===== MODALS (Privacy, Terms) ===== */
+        /* ===== MODALS ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -72,20 +66,13 @@
             color: #1E1B4B;
             margin: 1.2rem 0 0.4rem;
         }
-        .modal-box p {
+        .modal-box p, .modal-box li {
             font-size: 0.95rem;
             line-height: 1.6;
             color: #334155;
-            margin-bottom: 0.5rem;
         }
         .modal-box ul {
             padding-left: 1.5rem;
-            color: #334155;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .modal-box ul li {
-            margin-bottom: 0.3rem;
         }
         .modal-box .legal-meta {
             color: #64748b;
@@ -118,11 +105,9 @@
                 <img src="assets/logo.png" alt="Angza" />
                 <span class="brand-name">Angza</span>
             </div>
-
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
-
             <div class="nav-menu" id="navMenu">
                 <button class="nav-link active" data-section="home">Home</button>
                 <button class="nav-link" data-section="features">Features</button>
@@ -138,59 +123,21 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <div class="text-center">
-                    <h1>
-                        Audit Contracts &amp; Financials <br />
-                        <span class="gradient-text">with AI Precision</span>
-                    </h1>
-                    <p>
-                        Upload hundreds of pages. Get back a structured risk report in seconds.
-                        No hallucinations, no hidden clauses – just actionable insights.
-                    </p>
-
+                    <h1>Audit Contracts &amp; Financials <br /><span class="gradient-text">with AI Precision</span></h1>
+                    <p>Upload hundreds of pages. Get back a structured risk report in seconds.</p>
                     <div class="hero-stats">
-                        <div class="stat-card">
-                            <div class="number">100+</div>
-                            <div class="label">Document types supported</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number">70%</div>
-                            <div class="label">Time saved on reviews</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number">99.2%</div>
-                            <div class="label">Entity extraction accuracy</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="number">24/7</div>
-                            <div class="label">Automated compliance monitoring</div>
-                        </div>
+                        <div class="stat-card"><div class="number">100+</div><div class="label">Document types supported</div></div>
+                        <div class="stat-card"><div class="number">70%</div><div class="label">Time saved on reviews</div></div>
+                        <div class="stat-card"><div class="number">99.2%</div><div class="label">Entity extraction accuracy</div></div>
+                        <div class="stat-card"><div class="number">24/7</div><div class="label">Automated compliance monitoring</div></div>
                     </div>
-
                     <div class="testimonials">
-                        <div style="text-align:center; margin-bottom:1.5rem;">
-                            <span style="color:rgba(255,255,255,0.5); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;">What people say</span>
-                        </div>
+                        <div style="text-align:center;margin-bottom:1.5rem;"><span style="color:rgba(255,255,255,0.5);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;">What people say</span></div>
                         <div class="testimonials-grid">
-                            <div class="testimonial-card">
-                                <div class="quote"><i class="fas fa-quote-left"></i> Angza uncovered liability caps we'd missed for years. It's like having a senior counsel on demand.</div>
-                                <div class="author">Kelvin Oluoch</div>
-                                <div class="role">Legal Counsel, Fintech Co.</div>
-                            </div>
-                            <div class="testimonial-card">
-                                <div class="quote"><i class="fas fa-quote-left"></i> I reviewed a 200‑page vendor agreement in under 5 minutes. The risk breakdown was incredibly clear.</div>
-                                <div class="author">Emmanuel Indiazi</div>
-                                <div class="role">CFO, SaaS Startup</div>
-                            </div>
-                            <div class="testimonial-card">
-                                <div class="quote"><i class="fas fa-quote-left"></i> We use Angza for all our NDAs and partnership agreements. It's become our go‑to compliance tool.</div>
-                                <div class="author">Jerry Rawlince</div>
-                                <div class="role">Founder, LegalTech Hub</div>
-                            </div>
-                            <div class="testimonial-card">
-                                <div class="quote"><i class="fas fa-quote-left"></i> The speed and accuracy are unmatched. I can now focus on strategy instead of reading endless fine print.</div>
-                                <div class="author">Vallery Akinyi</div>
-                                <div class="role">Compliance Officer, Enterprise Corp</div>
-                            </div>
+                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Angza uncovered liability caps we'd missed for years.</div><div class="author">Kelvin Oluoch</div><div class="role">Legal Counsel, Fintech Co.</div></div>
+                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Reviewed a 200‑page agreement in under 5 minutes.</div><div class="author">Emmanuel Indiazi</div><div class="role">CFO, SaaS Startup</div></div>
+                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Our go‑to compliance tool for NDAs and partnerships.</div><div class="author">Jerry Rawlince</div><div class="role">Founder, LegalTech Hub</div></div>
+                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Unmatched speed and accuracy – I focus on strategy now.</div><div class="author">Vallery Akinyi</div><div class="role">Compliance Officer, Enterprise Corp</div></div>
                         </div>
                     </div>
                 </div>
@@ -201,47 +148,14 @@
     <!-- ========== FEATURES ========== -->
     <section id="features" class="page features-section">
         <div class="container">
-            <div class="text-center">
-                <h2 class="section-title-hero">Why Angza?</h2>
-                <p class="section-subtitle">Illuminate the fine print. Secure your contracts.</p>
-            </div>
-
+            <div class="text-center"><h2 class="section-title-hero">Why Angza?</h2><p class="section-subtitle">Illuminate the fine print. Secure your contracts.</p></div>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon blue"><i class="fas fa-expand"></i></div>
-                    <h3>Unlimited Document Length</h3>
-                    <p>Review entire contracts, annual reports, or codebases of any size. Our intelligent system processes everything without truncation or summarisation.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon indigo"><i class="fas fa-robot"></i></div>
-                    <h3>Multi-Stage AI Analysis</h3>
-                    <p>Classify, extract, cross-reference, and flag risks using a specialised pipeline – ensuring each document type gets the tailored analysis it deserves.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon emerald"><i class="fas fa-shield"></i></div>
-                    <h3>Enterprise-Grade Security</h3>
-                    <p>SOC-2 ready, on-premise deployment available, and zero data retention policies – your documents stay confidential and protected.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon purple"><i class="fas fa-file-pdf"></i></div>
-                    <h3>Universal Document Support</h3>
-                    <p>PDF, Word, Excel, emails, and scanned images (OCR included). One unified pipeline for all your documents.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon rose"><i class="fas fa-flag"></i></div>
-                    <h3>Smart Risk Identification</h3>
-                    <p>Each finding gets a severity score with clear, actionable recommendations and precise clause citations for full transparency.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon amber"><i class="fas fa-sliders-h"></i></div>
-                    <h3>Custom Compliance Rules</h3>
-                    <p>Define your own deterministic checks (e.g., cap limits, currency thresholds) via simple configuration – no coding required.</p>
-                </div>
+                <div class="feature-card"><div class="feature-icon blue"><i class="fas fa-expand"></i></div><h3>Unlimited Document Length</h3><p>Review entire contracts, annual reports, or codebases of any size.</p></div>
+                <div class="feature-card"><div class="feature-icon indigo"><i class="fas fa-robot"></i></div><h3>Multi-Stage AI Analysis</h3><p>Classify, extract, cross-reference, and flag risks using a specialised pipeline.</p></div>
+                <div class="feature-card"><div class="feature-icon emerald"><i class="fas fa-shield"></i></div><h3>Enterprise-Grade Security</h3><p>SOC-2 ready, on-premise deployment, zero data retention.</p></div>
+                <div class="feature-card"><div class="feature-icon purple"><i class="fas fa-file-pdf"></i></div><h3>Universal Document Support</h3><p>PDF, Word, Excel, emails, and scanned images (OCR included).</p></div>
+                <div class="feature-card"><div class="feature-icon rose"><i class="fas fa-flag"></i></div><h3>Smart Risk Identification</h3><p>Severity scores with actionable recommendations and clause citations.</p></div>
+                <div class="feature-card"><div class="feature-icon amber"><i class="fas fa-sliders-h"></i></div><h3>Custom Compliance Rules</h3><p>Define your own deterministic checks via simple configuration.</p></div>
             </div>
         </div>
     </section>
@@ -249,75 +163,22 @@
     <!-- ========== HOW IT WORKS ========== -->
     <section id="how-it-works" class="page how-section">
         <div class="container">
-            <div class="text-center">
-                <h2 class="section-title-hero">Simple 3‑Step Flow</h2>
-            </div>
-
+            <div class="text-center"><h2 class="section-title-hero">Simple 3‑Step Flow</h2></div>
             <div class="steps-grid">
                 <div class="step-connector"></div>
-
-                <div class="step-item">
-                    <div class="step-icon upload"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <h3>Upload</h3>
-                    <p>Select your PDF, Word, or Excel file.</p>
-                </div>
-
-                <div class="step-item">
-                    <div class="step-icon analyse"><i class="fas fa-search"></i></div>
-                    <h3>Analyse</h3>
-                    <p>Our AI classifies, extracts key terms, runs checks, and performs deep reasoning across all your data.</p>
-                </div>
-
-                <div class="step-item">
-                    <div class="step-icon report"><i class="fas fa-file-alt"></i></div>
-                    <h3>Get Report</h3>
-                    <p>Download a structured report with risk scores, flagged clauses, and remediation steps.</p>
-                </div>
+                <div class="step-item"><div class="step-icon upload"><i class="fas fa-cloud-upload-alt"></i></div><h3>Upload</h3><p>Select your PDF, Word, or Excel file.</p></div>
+                <div class="step-item"><div class="step-icon analyse"><i class="fas fa-search"></i></div><h3>Analyse</h3><p>Our AI classifies, extracts key terms, runs checks, and reasons across your data.</p></div>
+                <div class="step-item"><div class="step-icon report"><i class="fas fa-file-alt"></i></div><h3>Get Report</h3><p>Download a structured report with risk scores, flagged clauses, and remediation steps.</p></div>
             </div>
-
             <div class="upload-area">
-                <div class="drop-zone" id="dropZone">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Drop your document here, or click to browse</p>
-                    <span class="drop-hint">Supports PDF, Word, Excel, TXT</span>
-                </div>
-
+                <div class="drop-zone" id="dropZone"><i class="fas fa-cloud-upload-alt"></i><p>Drop your document here, or click to browse</p><span class="drop-hint">Supports PDF, Word, Excel, TXT</span></div>
                 <input type="file" id="fileInput" class="hidden" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt" />
-
-                <div class="upload-preview" id="uploadPreview">
-                    <i class="fas fa-file file-icon"></i>
-                    <span class="file-name" id="fileName">file.pdf</span>
-                    <span class="file-size" id="fileSize">12.4 KB</span>
-                    <button class="file-remove" id="fileRemove"><i class="fas fa-times"></i></button>
-                </div>
-
-                <button id="uploadBtn" class="btn-upload" style="margin-top:0.5rem;">
-                    <i class="fas fa-cloud-upload-alt"></i> Upload Document
-                </button>
+                <div class="upload-preview" id="uploadPreview"><i class="fas fa-file file-icon"></i><span class="file-name" id="fileName">file.pdf</span><span class="file-size" id="fileSize">12.4 KB</span><button class="file-remove" id="fileRemove"><i class="fas fa-times"></i></button></div>
+                <button id="uploadBtn" class="btn-upload" style="margin-top:0.5rem;"><i class="fas fa-cloud-upload-alt"></i> Upload Document</button>
                 <p class="upload-hint">Or click the button above</p>
-
-                <div id="loading">
-                    <div class="spinner"></div>
-                    <p>Analysing your document...</p>
-                </div>
-
+                <div id="loading"><div class="spinner"></div><p>Analysing your document...</p></div>
                 <div id="results"></div>
-
-                <div id="downloadSection">
-                    <h4><i class="fas fa-download"></i> Download Report</h4>
-                    <div class="download-buttons">
-                        <button id="downloadPdf" class="btn-download pdf">
-                            <i class="fas fa-file-pdf"></i> PDF
-                        </button>
-                        <button id="downloadExcel" class="btn-download excel">
-                            <i class="fas fa-file-excel"></i> Excel
-                        </button>
-                        <button id="downloadJson" class="btn-download json">
-                            <i class="fas fa-file-code"></i> JSON
-                        </button>
-                    </div>
-                    <p>Download the audit report in your preferred format.</p>
-                </div>
+                <div id="downloadSection"><h4><i class="fas fa-download"></i> Download Report</h4><div class="download-buttons"><button id="downloadPdf" class="btn-download pdf"><i class="fas fa-file-pdf"></i> PDF</button><button id="downloadExcel" class="btn-download excel"><i class="fas fa-file-excel"></i> Excel</button><button id="downloadJson" class="btn-download json"><i class="fas fa-file-code"></i> JSON</button></div><p>Download the audit report in your preferred format.</p></div>
             </div>
         </div>
     </section>
@@ -326,45 +187,18 @@
     <section id="contact" class="page contact-section">
         <div class="contact-overlay"></div>
         <div class="container">
-            <div class="text-center">
-                <h2 class="section-title-hero">Contact Us</h2>
-                <p class="section-subtitle">Have questions, feedback, or need a custom audit? We'd love to hear from you.</p>
-            </div>
-
-            <form class="contact-form" 
-                  action="https://api.staticforms.dev/submit" 
-                  method="post"
-                  id="contactForm">
-
+            <div class="text-center"><h2 class="section-title-hero">Contact Us</h2><p class="section-subtitle">Have questions, feedback, or need a custom audit? We'd love to hear from you.</p></div>
+            <form class="contact-form" action="https://api.staticforms.dev/submit" method="post" id="contactForm">
                 <input type="hidden" name="apiKey" value="sf_dfdd7993f0b99fbdbc81967e">
                 <input type="hidden" name="redirectTo" value="">
-
-                <label for="name"><i class="fas fa-user"></i> Your Name</label>
-                <input type="text" id="name" name="name" required />
-
-                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
-                <input type="email" id="email" name="email" required />
-
-                <label for="subject"><i class="fas fa-tag"></i> Subject</label>
-                <input type="text" id="subject" name="subject" />
-
-                <label for="message"><i class="fas fa-pen"></i> Message</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit" class="btn-submit" id="submitBtn">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
+                <label for="name"><i class="fas fa-user"></i> Your Name</label><input type="text" id="name" name="name" required />
+                <label for="email"><i class="fas fa-envelope"></i> Email Address</label><input type="email" id="email" name="email" required />
+                <label for="subject"><i class="fas fa-tag"></i> Subject</label><input type="text" id="subject" name="subject" />
+                <label for="message"><i class="fas fa-pen"></i> Message</label><textarea id="message" name="message" required></textarea>
+                <button type="submit" class="btn-submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
             </form>
-
-            <div id="formSuccess" class="form-success">
-                <i class="fas fa-check-circle"></i>
-                Thank you! Your message has been sent. We'll get back to you soon.
-            </div>
-
-            <div id="formError" class="form-error">
-                <i class="fas fa-exclamation-circle"></i>
-                Something went wrong. Please try again or contact us directly at <strong>clovisodhiambo44@gmail.com</strong>.
-            </div>
+            <div id="formSuccess" class="form-success"><i class="fas fa-check-circle"></i> Thank you! Your message has been sent.</div>
+            <div id="formError" class="form-error"><i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again.</div>
         </div>
     </section>
 
@@ -374,9 +208,7 @@
             <button class="nav-link-footer" id="privacyLink"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
             <button class="nav-link-footer" id="termsLink"><i class="fas fa-file-contract"></i> Terms of Service</button>
         </div>
-        <div class="footer-copy">
-            &copy; 2026 Angza, Inc. Built by <span class="highlight">Clovis Odhiambo</span>
-        </div>
+        <div class="footer-copy">&copy; 2026 Angza, Inc. Built by <span class="highlight">Clovis Odhiambo</span></div>
     </footer>
 
     <!-- ========== PRIVACY POLICY MODAL ========== -->
@@ -386,39 +218,13 @@
             <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
             <p class="legal-meta"><strong>Last updated:</strong> August 2026</p>
             <p>Angza ("we", "our", "us") respects your privacy. This policy explains how we handle your data.</p>
-
             <h3>Data We Collect</h3>
-            <ul>
-                <li><strong>Uploaded Documents:</strong> We process the content of your documents in memory to generate audit reports. We do <strong>not</strong> store them permanently. They are deleted immediately after the audit is completed.</li>
-                <li><strong>Contact Information:</strong> If you use the contact form, we collect your name, email, and message solely to respond to your inquiry. We do not use this information for marketing without your explicit consent.</li>
-            </ul>
-
+            <ul><li><strong>Uploaded Documents:</strong> We process the content of your documents in memory to generate audit reports. We do <strong>not</strong> store them permanently. They are deleted immediately after the audit is completed.</li><li><strong>Contact Information:</strong> If you use the contact form, we collect your name, email, and message solely to respond to your inquiry.</li></ul>
             <h3>How We Use Your Data</h3>
-            <ul>
-                <li>To provide and improve the audit service.</li>
-                <li>To respond to your messages and support requests.</li>
-                <li>To monitor usage and prevent abuse (e.g., rate limiting).</li>
-            </ul>
-
-            <h3>Data Sharing</h3>
-            <p>We do <strong>not</strong> share your personal data or document content with third parties, except as required by law or to protect our legal rights.</p>
-
-            <h3>Data Retention</h3>
-            <ul>
-                <li>Uploaded documents are <strong>deleted immediately</strong> after the audit.</li>
-                <li>Contact form submissions are retained for up to 30 days for record‑keeping and then deleted.</li>
-            </ul>
-
-            <h3>Your Rights</h3>
-            <ul>
-                <li>You may request access to the data we hold about you.</li>
-                <li>You may ask us to correct or delete your personal data.</li>
-                <li>You may withdraw consent for processing at any time.</li>
-            </ul>
-            <p>To exercise these rights, contact us at <strong>clovisodhiambo44@gmail.com</strong>.</p>
-
-            <h3>Cookies</h3>
-            <p>We use a simple cookie to remember your consent preference. No tracking cookies are used.</p>
+            <ul><li>To provide and improve the audit service.</li><li>To respond to your messages and support requests.</li><li>To monitor usage and prevent abuse.</li></ul>
+            <h3>Data Sharing</h3><p>We do <strong>not</strong> share your personal data or document content with third parties, except as required by law.</p>
+            <h3>Data Retention</h3><ul><li>Uploaded documents are <strong>deleted immediately</strong> after the audit.</li><li>Contact form submissions are retained for up to 30 days and then deleted.</li></ul>
+            <h3>Your Rights</h3><ul><li>Request access to your data.</li><li>Ask us to correct or delete your personal data.</li><li>Withdraw consent at any time.</li></ul><p>Contact: <strong>clovisodhiambo44@gmail.com</strong></p>
         </div>
     </div>
 
@@ -429,45 +235,21 @@
             <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
             <p class="legal-meta"><strong>Last updated:</strong> August 2026</p>
             <p>By using Angza ("we", "our", "us"), you agree to the following terms.</p>
-
-            <h3>Acceptance of Terms</h3>
-            <p>By accessing or using our service, you agree to be bound by these terms. If you disagree, you must not use the service.</p>
-
-            <h3>Description of Service</h3>
-            <p>Angza provides an AI‑powered contract and financial document auditing tool. We generate risk reports based on the content you upload. The service is provided "as is" and is intended for informational purposes only — it does not constitute legal advice.</p>
-
-            <h3>User Responsibilities</h3>
-            <ul>
-                <li>You are solely responsible for the content you upload and its legality.</li>
-                <li>You must not upload any harmful, illegal, or infringing content.</li>
-                <li>You agree not to misuse, reverse‑engineer, or attempt to exploit the service.</li>
-                <li>You are responsible for maintaining the confidentiality of your account (if any).</li>
-            </ul>
-
-            <h3>Disclaimer of Warranties</h3>
-            <p>The service is provided "as is" and "as available" without warranties of any kind. We do not guarantee that the audit results are error‑free, complete, or suitable for your specific needs. You assume all risk associated with using the service.</p>
-
-            <h3>Limitation of Liability</h3>
-            <p>In no event shall Angza be liable for any indirect, incidental, special, or consequential damages arising from your use of the service, including but not limited to loss of data, revenue, or goodwill.</p>
-
-            <h3>Changes to Terms</h3>
-            <p>We reserve the right to update these terms at any time. Continued use after changes constitutes acceptance of the new terms.</p>
-
-            <h3>Governing Law</h3>
-            <p>These terms shall be governed by and construed in accordance with the laws of Kenya, without regard to its conflict of law provisions.</p>
-
-            <h3>Contact</h3>
-            <p>For questions about these terms, contact us at <strong>clovisodhiambo44@gmail.com</strong>.</p>
+            <h3>Acceptance of Terms</h3><p>By accessing or using our service, you agree to be bound by these terms.</p>
+            <h3>Description of Service</h3><p>Angza provides an AI‑powered contract and financial document auditing tool. The service is provided "as is" and does not constitute legal advice.</p>
+            <h3>User Responsibilities</h3><ul><li>You are responsible for the content you upload.</li><li>You must not upload illegal or harmful content.</li><li>You agree not to misuse the service.</li></ul>
+            <h3>Disclaimer of Warranties</h3><p>The service is provided "as is". We do not guarantee error‑free results.</p>
+            <h3>Limitation of Liability</h3><p>Angza is not liable for indirect, incidental, or consequential damages.</p>
+            <h3>Changes to Terms</h3><p>We may update these terms at any time. Continued use constitutes acceptance.</p><p>Contact: <strong>clovisodhiambo44@gmail.com</strong></p>
         </div>
     </div>
 
     <!-- ========== COOKIE BANNER ========== -->
     <div class="cookie-banner" id="cookieBanner">
-        <p><i class="fas fa-cookie-bite"></i> We use cookies to improve your experience. By using our site, you accept our use of cookies.</p>
+        <p><i class="fas fa-cookie-bite"></i> We use cookies to improve your experience.</p>
         <button class="btn-cookie" id="cookieAccept">Accept</button>
     </div>
 
-    <!-- ========== JAVASCRIPT ========== -->
     <script src="js/app.js"></script>
     <script>
         // ---- Contact Form ----
@@ -478,26 +260,23 @@
             btn.innerHTML = '<span class="spinner-small"></span> Sending...';
             const form = this;
             const formData = new FormData(form);
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('formSuccess').classList.add('show');
-                    form.reset();
-                } else {
+            fetch(form.action, { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('formSuccess').classList.add('show');
+                        form.reset();
+                    } else {
+                        document.getElementById('formError').classList.add('show');
+                    }
+                })
+                .catch(() => {
                     document.getElementById('formError').classList.add('show');
-                }
-            })
-            .catch(() => {
-                document.getElementById('formError').classList.add('show');
-            })
-            .finally(() => {
-                btn.disabled = false;
-                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-            });
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                });
         });
 
         // ---- Modal controls ----
@@ -508,7 +287,6 @@
             document.getElementById(id).classList.remove('active');
         }
 
-        // Privacy Policy
         document.getElementById('privacyLink').addEventListener('click', function(e) {
             e.preventDefault();
             openModal('privacyModal');
@@ -517,7 +295,6 @@
             closeModal('privacyModal');
         });
 
-        // Terms of Service
         document.getElementById('termsLink').addEventListener('click', function(e) {
             e.preventDefault();
             openModal('termsModal');
@@ -526,12 +303,9 @@
             closeModal('termsModal');
         });
 
-        // Close modals on background click
         document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
             overlay.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('active');
-                }
+                if (e.target === this) this.classList.remove('active');
             });
         });
 
@@ -617,25 +391,19 @@
             e.stopPropagation();
             navMenu.classList.toggle('active');
             const icon = this.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.className = 'fas fa-times';
-            } else {
-                icon.className = 'fas fa-bars';
-            }
+            icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
         });
         document.querySelectorAll('.nav-link').forEach(function(link) {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.className = 'fas fa-bars';
+                menuToggle.querySelector('i').className = 'fas fa-bars';
             });
         });
         document.addEventListener('click', function(event) {
             const isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
             if (!isClickInside && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.className = 'fas fa-bars';
+                menuToggle.querySelector('i').className = 'fas fa-bars';
             }
         });
     </script>
