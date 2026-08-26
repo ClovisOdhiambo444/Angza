@@ -16,72 +16,78 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <style>
-        .legal-section {
-            background: #f8fafc;
-            padding: 6rem 1.5rem 4rem;
-            min-height: 100vh;
-            display: flex;
+        /* ===== MODALS (Privacy, Terms) ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
             align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
         }
-        .legal-section .container {
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
             background: #ffffff;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
             border-radius: 1rem;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            border: 1px solid #e2e8f0;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
         }
-        .legal-section h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
+        .modal-box .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            transition: color 0.3s;
+        }
+        .modal-box .modal-close:hover {
             color: #0f172a;
+        }
+        .modal-box h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #0f172a 0%, #1E1B4B 30%, #2563EB 70%, #06B6D4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
         }
-        .legal-section h1 i {
-            -webkit-text-fill-color: #2563EB;
-            margin-right: 0.5rem;
-        }
-        .legal-section h2 {
-            font-size: 1.2rem;
+        .modal-box h3 {
+            font-size: 1.1rem;
             font-weight: 600;
             color: #1E1B4B;
-            margin: 1.5rem 0 0.5rem;
+            margin: 1.2rem 0 0.4rem;
         }
-        .legal-section p, .legal-section li {
-            font-size: 1rem;
-            line-height: 1.7;
+        .modal-box p {
+            font-size: 0.95rem;
+            line-height: 1.6;
             color: #334155;
+            margin-bottom: 0.5rem;
         }
-        .legal-section ul {
+        .modal-box ul {
             padding-left: 1.5rem;
+            color: #334155;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
-        .legal-section ul li {
+        .modal-box ul li {
             margin-bottom: 0.3rem;
         }
-        .legal-section .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: #2563EB;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-size: 1rem;
-        }
-        .legal-section .back-link i {
-            margin-right: 0.4rem;
-        }
-        .legal-section .back-link:hover {
-            text-decoration: underline;
-        }
-        .legal-section .legal-meta {
+        .modal-box .legal-meta {
             color: #64748b;
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
@@ -100,11 +106,6 @@
         }
         .nav-link-footer:hover {
             color: #93C5FD;
-        }
-        @media (max-width: 640px) {
-            .legal-section { padding: 5rem 1rem 2rem; }
-            .legal-section .container { padding: 1.5rem; }
-            .legal-section h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -367,36 +368,48 @@
         </div>
     </section>
 
-    <!-- ========== PRIVACY POLICY ========== -->
-    <section id="privacy" class="page legal-section">
-        <div class="container">
-            <h1><i class="fas fa-shield-alt"></i> Privacy Policy</h1>
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <button class="nav-link-footer" id="privacyLink"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
+            <button class="nav-link-footer" id="termsLink"><i class="fas fa-file-contract"></i> Terms of Service</button>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 Angza, Inc. Built by <span class="highlight">Clovis Odhiambo</span>
+        </div>
+    </footer>
+
+    <!-- ========== PRIVACY POLICY MODAL ========== -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal-box">
+            <button class="modal-close" id="privacyClose">&times;</button>
+            <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
             <p class="legal-meta"><strong>Last updated:</strong> August 2026</p>
             <p>Angza ("we", "our", "us") respects your privacy. This policy explains how we handle your data.</p>
 
-            <h2>Data We Collect</h2>
+            <h3>Data We Collect</h3>
             <ul>
                 <li><strong>Uploaded Documents:</strong> We process the content of your documents in memory to generate audit reports. We do <strong>not</strong> store them permanently. They are deleted immediately after the audit is completed.</li>
                 <li><strong>Contact Information:</strong> If you use the contact form, we collect your name, email, and message solely to respond to your inquiry. We do not use this information for marketing without your explicit consent.</li>
             </ul>
 
-            <h2>How We Use Your Data</h2>
+            <h3>How We Use Your Data</h3>
             <ul>
                 <li>To provide and improve the audit service.</li>
                 <li>To respond to your messages and support requests.</li>
                 <li>To monitor usage and prevent abuse (e.g., rate limiting).</li>
             </ul>
 
-            <h2>Data Sharing</h2>
+            <h3>Data Sharing</h3>
             <p>We do <strong>not</strong> share your personal data or document content with third parties, except as required by law or to protect our legal rights.</p>
 
-            <h2>Data Retention</h2>
+            <h3>Data Retention</h3>
             <ul>
                 <li>Uploaded documents are <strong>deleted immediately</strong> after the audit.</li>
                 <li>Contact form submissions are retained for up to 30 days for record‑keeping and then deleted.</li>
             </ul>
 
-            <h2>Your Rights</h2>
+            <h3>Your Rights</h3>
             <ul>
                 <li>You may request access to the data we hold about you.</li>
                 <li>You may ask us to correct or delete your personal data.</li>
@@ -404,27 +417,26 @@
             </ul>
             <p>To exercise these rights, contact us at <strong>clovisodhiambo44@gmail.com</strong>.</p>
 
-            <h2>Cookies</h2>
+            <h3>Cookies</h3>
             <p>We use a simple cookie to remember your consent preference. No tracking cookies are used.</p>
-
-            <button class="back-link" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Back to Angza</button>
         </div>
-    </section>
+    </div>
 
-    <!-- ========== TERMS OF SERVICE ========== -->
-    <section id="terms" class="page legal-section" style="background: #ffffff;">
-        <div class="container">
-            <h1><i class="fas fa-file-contract"></i> Terms of Service</h1>
+    <!-- ========== TERMS OF SERVICE MODAL ========== -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-box">
+            <button class="modal-close" id="termsClose">&times;</button>
+            <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
             <p class="legal-meta"><strong>Last updated:</strong> August 2026</p>
             <p>By using Angza ("we", "our", "us"), you agree to the following terms.</p>
 
-            <h2>Acceptance of Terms</h2>
+            <h3>Acceptance of Terms</h3>
             <p>By accessing or using our service, you agree to be bound by these terms. If you disagree, you must not use the service.</p>
 
-            <h2>Description of Service</h2>
+            <h3>Description of Service</h3>
             <p>Angza provides an AI‑powered contract and financial document auditing tool. We generate risk reports based on the content you upload. The service is provided "as is" and is intended for informational purposes only — it does not constitute legal advice.</p>
 
-            <h2>User Responsibilities</h2>
+            <h3>User Responsibilities</h3>
             <ul>
                 <li>You are solely responsible for the content you upload and its legality.</li>
                 <li>You must not upload any harmful, illegal, or infringing content.</li>
@@ -432,35 +444,22 @@
                 <li>You are responsible for maintaining the confidentiality of your account (if any).</li>
             </ul>
 
-            <h2>Disclaimer of Warranties</h2>
+            <h3>Disclaimer of Warranties</h3>
             <p>The service is provided "as is" and "as available" without warranties of any kind. We do not guarantee that the audit results are error‑free, complete, or suitable for your specific needs. You assume all risk associated with using the service.</p>
 
-            <h2>Limitation of Liability</h2>
+            <h3>Limitation of Liability</h3>
             <p>In no event shall Angza be liable for any indirect, incidental, special, or consequential damages arising from your use of the service, including but not limited to loss of data, revenue, or goodwill.</p>
 
-            <h2>Changes to Terms</h2>
+            <h3>Changes to Terms</h3>
             <p>We reserve the right to update these terms at any time. Continued use after changes constitutes acceptance of the new terms.</p>
 
-            <h2>Governing Law</h2>
+            <h3>Governing Law</h3>
             <p>These terms shall be governed by and construed in accordance with the laws of Kenya, without regard to its conflict of law provisions.</p>
 
-            <h2>Contact</h2>
+            <h3>Contact</h3>
             <p>For questions about these terms, contact us at <strong>clovisodhiambo44@gmail.com</strong>.</p>
-
-            <button class="back-link" onclick="navigateTo('home')"><i class="fas fa-arrow-left"></i> Back to Angza</button>
         </div>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="site-footer">
-        <div class="footer-links">
-            <button class="nav-link-footer" onclick="navigateTo('privacy')"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
-            <button class="nav-link-footer" onclick="navigateTo('terms')"><i class="fas fa-file-contract"></i> Terms of Service</button>
-        </div>
-        <div class="footer-copy">
-            &copy; 2026 Angza, Inc. Built by <span class="highlight">Clovis Odhiambo</span>
-        </div>
-    </footer>
+    </div>
 
     <!-- ========== COOKIE BANNER ========== -->
     <div class="cookie-banner" id="cookieBanner">
@@ -501,25 +500,38 @@
             });
         });
 
-        // ---- Navigation for legal pages ----
-        function navigateTo(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                document.querySelectorAll('.nav-link').forEach(function(link) {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section') === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-                document.querySelectorAll('.page').forEach(function(page) {
-                    page.classList.remove('active');
-                    if (page.id === sectionId) {
-                        page.classList.add('active');
-                    }
-                });
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+        // ---- Modal controls ----
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
         }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        document.getElementById('privacyLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('privacyModal');
+        });
+        document.getElementById('privacyClose').addEventListener('click', function() {
+            closeModal('privacyModal');
+        });
+
+        document.getElementById('termsLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('termsModal');
+        });
+        document.getElementById('termsClose').addEventListener('click', function() {
+            closeModal('termsModal');
+        });
+
+        // Close modals on background click
+        document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
 
         // ---- Cookie Banner ----
         if (!localStorage.getItem('cookieConsent')) {
