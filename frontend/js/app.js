@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('file', file);
 
             try {
-                var response = await fetch('https://angza-backend.onrender.com/api/upload', {
+                var response = await fetch('http://localhost:8000/api/upload', {
                     method: 'POST',
                     body: formData
                 });
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 resultsDiv.innerHTML = '<div class="result-error">' +
                     '<strong>Error:</strong> ' + error.message +
                     '<p style="font-size:0.875rem;margin-top:0.5rem;color:#64748b;">' +
-                    'Make sure the backend server is running at <code>https://angza-backend.onrender.com</code>.' +
+                    'Make sure the backend server is running at <code>http://localhost:8000</code>.' +
                     '</p></div>';
                 resultsDiv.classList.add('visible');
             } finally {
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DOWNLOAD HANDLERS
     // ============================================================
     function downloadReport(format) {
-        var url = 'https://angza-backend.onrender.com/api/report/' + format;
+        var url = 'http://localhost:8000/api/report/' + format;
         window.open(url, '_blank');
     }
 
@@ -281,5 +281,212 @@ document.addEventListener('DOMContentLoaded', function() {
 
         resultsDiv.classList.add('visible');
         resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ============================================================
+    // CONTACT FORM
+    // ============================================================
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-small"></span> Sending...';
+            var form = this;
+            var formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    document.getElementById('formSuccess').classList.add('show');
+                    form.reset();
+                } else {
+                    document.getElementById('formError').classList.add('show');
+                }
+            })
+            .catch(function() {
+                document.getElementById('formError').classList.add('show');
+            })
+            .finally(function() {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            });
+        });
+    }
+
+    // ============================================================
+    // MODAL CONTROLS
+    // ============================================================
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+
+    var privacyLink = document.getElementById('privacyLink');
+    if (privacyLink) {
+        privacyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('privacyModal');
+        });
+    }
+    var privacyClose = document.getElementById('privacyClose');
+    if (privacyClose) {
+        privacyClose.addEventListener('click', function() {
+            closeModal('privacyModal');
+        });
+    }
+
+    var termsLink = document.getElementById('termsLink');
+    if (termsLink) {
+        termsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('termsModal');
+        });
+    }
+    var termsClose = document.getElementById('termsClose');
+    if (termsClose) {
+        termsClose.addEventListener('click', function() {
+            closeModal('termsModal');
+        });
+    }
+
+    // Close modals on background click
+    document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+    });
+
+    // ============================================================
+    // COOKIE BANNER
+    // ============================================================
+    if (!localStorage.getItem('cookieConsent')) {
+        var banner = document.getElementById('cookieBanner');
+        if (banner) banner.classList.add('visible');
+    }
+    var cookieAccept = document.getElementById('cookieAccept');
+    if (cookieAccept) {
+        cookieAccept.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            var banner = document.getElementById('cookieBanner');
+            if (banner) banner.classList.remove('visible');
+        });
+    }
+
+    // ============================================================
+    // DRAG & DROP + UPLOAD PREVIEW
+    // ============================================================
+    var dropZone = document.getElementById('dropZone');
+    var fileInput2 = document.getElementById('fileInput');
+    var uploadBtn2 = document.getElementById('uploadBtn');
+    var preview = document.getElementById('uploadPreview');
+    var fileName = document.getElementById('fileName');
+    var fileSize = document.getElementById('fileSize');
+    var fileRemove = document.getElementById('fileRemove');
+    var selectedFile = null;
+
+    function updatePreview(file) {
+        if (file) {
+            selectedFile = file;
+            fileName.textContent = file.name;
+            var size = (file.size / 1024).toFixed(1);
+            fileSize.textContent = size + ' KB';
+            preview.classList.add('visible');
+            var icon = preview.querySelector('.file-icon');
+            var ext = file.name.split('.').pop().toLowerCase();
+            if (ext === 'pdf') icon.className = 'fas fa-file-pdf file-icon';
+            else if (['doc', 'docx'].includes(ext)) icon.className = 'fas fa-file-word file-icon';
+            else if (['xls', 'xlsx'].includes(ext)) icon.className = 'fas fa-file-excel file-icon';
+            else icon.className = 'fas fa-file file-icon';
+        } else {
+            selectedFile = null;
+            preview.classList.remove('visible');
+        }
+    }
+
+    if (fileInput2) {
+        fileInput2.addEventListener('change', function(e) {
+            if (this.files.length) updatePreview(this.files[0]);
+            else updatePreview(null);
+        });
+    }
+    if (uploadBtn2) {
+        uploadBtn2.addEventListener('click', function() {
+            if (selectedFile) {
+                var dataTransfer = new DataTransfer();
+                dataTransfer.items.add(selectedFile);
+                fileInput2.files = dataTransfer.files;
+                fileInput2.dispatchEvent(new Event('change'));
+            } else {
+                fileInput2.click();
+            }
+        });
+    }
+    if (fileRemove) {
+        fileRemove.addEventListener('click', function(e) {
+            e.stopPropagation();
+            updatePreview(null);
+            if (fileInput2) fileInput2.value = '';
+        });
+    }
+    if (dropZone) {
+        dropZone.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+        });
+        dropZone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            var files = e.dataTransfer.files;
+            if (files.length) updatePreview(files[0]);
+        });
+        dropZone.addEventListener('click', function() {
+            if (fileInput2) fileInput2.click();
+        });
+    }
+
+    // ============================================================
+    // MOBILE MENU
+    // ============================================================
+    var menuToggle = document.getElementById('menuToggle');
+    var navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            var icon = this.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+        document.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                var icon = menuToggle.querySelector('i');
+                if (icon) icon.className = 'fas fa-bars';
+            });
+        });
+        document.addEventListener('click', function(event) {
+            var isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInside && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                var icon = menuToggle.querySelector('i');
+                if (icon) icon.className = 'fas fa-bars';
+            }
+        });
     }
 });

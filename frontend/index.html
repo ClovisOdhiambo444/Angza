@@ -8,171 +8,6 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-
-    <style>
-        /* ===== MODALS – Glassmorphism ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-        .modal-overlay.active {
-            display: flex;
-        }
-        .modal-box {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 700px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            position: relative;
-            color: #ffffff;
-        }
-        .modal-box .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: rgba(255, 255, 255, 0.7);
-            transition: color 0.3s;
-        }
-        .modal-box .modal-close:hover {
-            color: #ffffff;
-        }
-        .modal-box h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #93C5FD 50%, #22D3EE 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .modal-box h2 i {
-            -webkit-text-fill-color: #93C5FD;
-            margin-right: 0.5rem;
-        }
-        .modal-box h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #e2e8f0;
-            margin: 1.2rem 0 0.4rem;
-        }
-        .modal-box p, .modal-box li {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        .modal-box ul {
-            padding-left: 1.5rem;
-        }
-        .modal-box .legal-meta {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        /* Scrollbar styling for modal */
-        .modal-box::-webkit-scrollbar {
-            width: 6px;
-        }
-        .modal-box::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-        .modal-box::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
-
-        /* ===== FOOTER – Inline + Glow ===== */
-        .site-footer {
-            background: linear-gradient(135deg, #0f172a 0%, #1E1B4B 50%, #2563EB 100%);
-            color: rgba(255, 255, 255, 0.75);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 0.85rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.25rem;
-            min-height: 60px;
-            backdrop-filter: blur(4px);
-        }
-        .site-footer .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .site-footer .footer-links .nav-link-footer {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            position: relative;
-        }
-        .site-footer .footer-links .nav-link-footer i {
-            color: #93C5FD;
-            transition: color 0.3s;
-        }
-        .site-footer .footer-links .nav-link-footer:hover {
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(147, 197, 253, 0.6), 0 0 40px rgba(37, 99, 235, 0.3);
-        }
-        .site-footer .footer-links .nav-link-footer:hover i {
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(147, 197, 253, 0.6);
-        }
-        .site-footer .footer-links .nav-link-footer::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #93C5FD, #22D3EE);
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-        .site-footer .footer-links .nav-link-footer:hover::after {
-            width: 100%;
-        }
-        .site-footer .footer-copy {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .site-footer .footer-copy .highlight {
-            color: #93C5FD;
-            font-weight: 500;
-        }
-    </style>
 </head>
 <body>
 
@@ -210,12 +45,28 @@
                         <div class="stat-card"><div class="number">24/7</div><div class="label">Automated compliance monitoring</div></div>
                     </div>
                     <div class="testimonials">
-                        <div style="text-align:center;margin-bottom:1.5rem;"><span style="color:rgba(255,255,255,0.5);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;">What people say</span></div>
+                        <div class="testimonials-header">What people say</div>
                         <div class="testimonials-grid">
-                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Angza uncovered liability caps we'd missed for years.</div><div class="author">Kelvin Oluoch</div><div class="role">Legal Counsel, Fintech Co.</div></div>
-                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Reviewed a 200‑page agreement in under 5 minutes.</div><div class="author">Emmanuel Indiazi</div><div class="role">CFO, SaaS Startup</div></div>
-                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Our go‑to compliance tool for NDAs and partnerships.</div><div class="author">Jerry Rawlince</div><div class="role">Founder, LegalTech Hub</div></div>
-                            <div class="testimonial-card"><div class="quote"><i class="fas fa-quote-left"></i> Unmatched speed and accuracy – I focus on strategy now.</div><div class="author">Vallery Akinyi</div><div class="role">Compliance Officer, Enterprise Corp</div></div>
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> Angza uncovered liability caps we'd missed for years.</div>
+                                <div class="author">Kelvin Oluoch</div>
+                                <div class="role">Legal Counsel, Fintech Co.</div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> Reviewed a 200‑page agreement in under 5 minutes.</div>
+                                <div class="author">Emmanuel Indiazi</div>
+                                <div class="role">CFO, SaaS Startup</div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> Our go‑to compliance tool for NDAs and partnerships.</div>
+                                <div class="author">Jerry Rawlince</div>
+                                <div class="role">Founder, LegalTech Hub</div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="quote"><i class="fas fa-quote-left"></i> Unmatched speed and accuracy – I focus on strategy now.</div>
+                                <div class="author">Vallery Akinyi</div>
+                                <div class="role">Compliance Officer, Enterprise Corp</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -280,7 +131,7 @@
         </div>
     </section>
 
-    <!-- ========== FOOTER – Inline with Glow ========== -->
+    <!-- ========== FOOTER ========== -->
     <footer class="site-footer">
         <div class="footer-links">
             <button class="nav-link-footer" id="privacyLink"><i class="fas fa-shield-alt"></i> Privacy Policy</button>
@@ -289,7 +140,7 @@
         <div class="footer-copy">&copy; 2026 Angza, Inc. Built by <span class="highlight">Clovis Odhiambo</span></div>
     </footer>
 
-    <!-- ========== PRIVACY POLICY MODAL (Glassmorphic) ========== -->
+    <!-- ========== PRIVACY POLICY MODAL ========== -->
     <div class="modal-overlay" id="privacyModal">
         <div class="modal-box">
             <button class="modal-close" id="privacyClose">&times;</button>
@@ -324,7 +175,7 @@
         </div>
     </div>
 
-    <!-- ========== TERMS OF SERVICE MODAL (Glassmorphic) ========== -->
+    <!-- ========== TERMS OF SERVICE MODAL ========== -->
     <div class="modal-overlay" id="termsModal">
         <div class="modal-box">
             <button class="modal-close" id="termsClose">&times;</button>
@@ -358,161 +209,5 @@
     </div>
 
     <script src="js/app.js"></script>
-    <script>
-        // ---- Contact Form ----
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner-small"></span> Sending...';
-            const form = this;
-            const formData = new FormData(form);
-            fetch(form.action, { method: 'POST', body: formData })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        document.getElementById('formSuccess').classList.add('show');
-                        form.reset();
-                    } else {
-                        document.getElementById('formError').classList.add('show');
-                    }
-                })
-                .catch(() => {
-                    document.getElementById('formError').classList.add('show');
-                })
-                .finally(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                });
-        });
-
-        // ---- Modal controls ----
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-        }
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-
-        document.getElementById('privacyLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal('privacyModal');
-        });
-        document.getElementById('privacyClose').addEventListener('click', function() {
-            closeModal('privacyModal');
-        });
-
-        document.getElementById('termsLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal('termsModal');
-        });
-        document.getElementById('termsClose').addEventListener('click', function() {
-            closeModal('termsModal');
-        });
-
-        document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
-            overlay.addEventListener('click', function(e) {
-                if (e.target === this) this.classList.remove('active');
-            });
-        });
-
-        // ---- Cookie Banner ----
-        if (!localStorage.getItem('cookieConsent')) {
-            document.getElementById('cookieBanner').classList.add('visible');
-        }
-        document.getElementById('cookieAccept').addEventListener('click', function() {
-            localStorage.setItem('cookieConsent', 'true');
-            document.getElementById('cookieBanner').classList.remove('visible');
-        });
-
-        // ---- Drag & Drop ----
-        const dropZone = document.getElementById('dropZone');
-        const fileInput = document.getElementById('fileInput');
-        const uploadBtn = document.getElementById('uploadBtn');
-        const preview = document.getElementById('uploadPreview');
-        const fileName = document.getElementById('fileName');
-        const fileSize = document.getElementById('fileSize');
-        const fileRemove = document.getElementById('fileRemove');
-        let selectedFile = null;
-
-        function updatePreview(file) {
-            if (file) {
-                selectedFile = file;
-                fileName.textContent = file.name;
-                const size = (file.size / 1024).toFixed(1);
-                fileSize.textContent = size + ' KB';
-                preview.classList.add('visible');
-                const icon = preview.querySelector('.file-icon');
-                const ext = file.name.split('.').pop().toLowerCase();
-                if (ext === 'pdf') icon.className = 'fas fa-file-pdf file-icon';
-                else if (['doc', 'docx'].includes(ext)) icon.className = 'fas fa-file-word file-icon';
-                else if (['xls', 'xlsx'].includes(ext)) icon.className = 'fas fa-file-excel file-icon';
-                else icon.className = 'fas fa-file file-icon';
-            } else {
-                selectedFile = null;
-                preview.classList.remove('visible');
-            }
-        }
-
-        fileInput.addEventListener('change', function(e) {
-            if (this.files.length) updatePreview(this.files[0]);
-            else updatePreview(null);
-        });
-        uploadBtn.addEventListener('click', function() {
-            if (selectedFile) {
-                const dataTransfer = new DataTransfer();
-                dataTransfer.items.add(selectedFile);
-                fileInput.files = dataTransfer.files;
-                fileInput.dispatchEvent(new Event('change'));
-            } else {
-                fileInput.click();
-            }
-        });
-        fileRemove.addEventListener('click', function(e) {
-            e.stopPropagation();
-            updatePreview(null);
-            fileInput.value = '';
-        });
-        dropZone.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            this.classList.add('dragover');
-        });
-        dropZone.addEventListener('dragleave', function(e) {
-            e.preventDefault();
-            this.classList.remove('dragover');
-        });
-        dropZone.addEventListener('drop', function(e) {
-            e.preventDefault();
-            this.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length) updatePreview(files[0]);
-        });
-        dropZone.addEventListener('click', function() {
-            fileInput.click();
-        });
-
-        // ---- Mobile Menu ----
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            navMenu.classList.toggle('active');
-            const icon = this.querySelector('i');
-            icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-        });
-        document.querySelectorAll('.nav-link').forEach(function(link) {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                menuToggle.querySelector('i').className = 'fas fa-bars';
-            });
-        });
-        document.addEventListener('click', function(event) {
-            const isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
-            if (!isClickInside && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                menuToggle.querySelector('i').className = 'fas fa-bars';
-            }
-        });
-    </script>
 </body>
 </html>
