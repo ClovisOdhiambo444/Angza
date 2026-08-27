@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('file', file);
 
             try {
-                var response = await fetch('http://localhost:8000/api/upload', {
+                var response = await fetch('https://angza-backend.onrender.com/api/upload', {
                     method: 'POST',
                     body: formData
                 });
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 resultsDiv.innerHTML = '<div class="result-error">' +
                     '<strong>Error:</strong> ' + error.message +
                     '<p style="font-size:0.875rem;margin-top:0.5rem;color:#64748b;">' +
-                    'Make sure the backend server is running at <code>http://localhost:8000</code>.' +
+                    'Make sure the backend server is running at <code>https://angza-backend.onrender.com</code>.' +
                     '</p></div>';
                 resultsDiv.classList.add('visible');
             } finally {
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // DOWNLOAD HANDLERS
     // ============================================================
     function downloadReport(format) {
-        var url = 'http://localhost:8000/api/report/' + format;
+        var url = 'https://angza-backend.onrender.com/api/report/' + format;
         window.open(url, '_blank');
     }
 
